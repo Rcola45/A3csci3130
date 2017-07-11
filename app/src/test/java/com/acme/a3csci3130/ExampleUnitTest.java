@@ -15,19 +15,21 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
-    @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
-    }
 
     @Test
     public void validation_isCorrect() throws Exception {
-        FirebaseDatabase firebaseDBInstance = FirebaseDatabase.getInstance();
-        DatabaseReference  firebaseReference = firebaseDBInstance.getReference("businesses");
-
-        String businessID = firebaseReference.push().getKey();
+        String businessID = "unique123key";
         String name = "ValidName";
 
+        int businessNumber = 123456789;
+        String primaryBusiness = "Fisher";
+        String address = "123 Main St";
+        String province = "QC";
+
+        Business business = new Business(businessID, name, businessNumber, primaryBusiness, address, province);
+
+        assertNotNull(business);
+        assertEquals(business.name, "ValidName");
 
     }
 }
